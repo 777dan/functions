@@ -43,7 +43,10 @@
 // // printTable(0, 10, 2, function (x) { return x / 2; });
 
 let functions = [square, double, sin, cos];
-
+let question = prompt("Введите 0 для функции square, 1 для функции double, 2 для фукнции sin, 3 для функции cos");
+if (isNaN(question) || !question.trim()) {
+    alert("Произошла ошибка. Повторите снова.");
+}
 function printTable(from, to, step, func) {
     if (func === undefined) {
         return;
@@ -51,7 +54,7 @@ function printTable(from, to, step, func) {
     from = from;
     to = to;
     step = step || 1;
-    document.write("<table border='1' cellspacing='0'>");
+    document.write("<table border='3' cellspacing='0'>");
     for (var x = from; x <= to; x += step) {
         document.write("<tr>");
         document.write("<td>" + x + "</td>");
@@ -74,7 +77,4 @@ function cos(x) {
     return Math.cos(x);
 }
 
-let rand = Math.floor((Math.random() * functions.length));
-console.log(rand);
-// printTable(-4, 4, 1, quadratic);
-printTable(-4, 4, 1, functions[rand]);
+printTable(-4, 4, 1, functions[question]);
